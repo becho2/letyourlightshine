@@ -30,7 +30,7 @@ def save_order():
         "phone": phone_rec
     }
     db.orders.insert_one(doc)
-    return jsonify({'msg': '주문이 등록되었습니다.'})
+    return jsonify({'msg': '진짜 사시려구요? 정보 등록됐습니다!'})
 
 
 # 주문 목록보기(Read) API
