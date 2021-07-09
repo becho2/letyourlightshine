@@ -26,29 +26,31 @@ def jobs():
 
 ## 채용공고 스크래핑 API 
 @app.route('/jobs_get', methods=['GET'])
-def write_review():
-    url_rec = https://www.saramin.co.kr/zf_user/search?cat_key=120311&company_cd=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C9%2C10&loc_cd=101240%2C101180%2C101150%2C101230%2C101130%2C101140%2C101010%2C101120%2C101160&panel_type=&search_optional_item=y&search_done=y&panel_count=y
+def jobs_get():
+    url_rec = "https://www.saramin.co.kr/zf_user/search?searchType=search&loc_cd=101010%2C101120%2C101130%2C101140%2C101150%2C101160%2C101180%2C101230%2C101240&cat_key=120311&company_cd=0%2C1%2C2%2C3%2C4%2C5%2C6%2C7%2C9%2C10&keydownAccess=&searchword=%ED%8C%A8%ED%82%A4%EC%A7%80+%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88+%EA%B2%BD%EB%A0%A5&panel_type=&search_optional_item=y&search_done=y&panel_count=y"
     # print(url_rec, comment_rec)
+    # #recruit_info_list > div.content > div:nth-child(1)
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     data = requests.get(url_rec, headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
-    return jsonify({'msg': '등록 완료!', 'response':soup})
+    items = soup.select('#recruit_info_list > div.content > div')
+    job_list = []
+    for item in items:
+        company = item.select_one('div.area_corp > strong > a')['title']
+        company_url = item.select_one('div.area_corp > strong > a')['href']
+        title = item.select_one('div.area_job > h2 > a')['title']
+        title_url = item.select_one('div.area_job > h2 > a')['href']
+        region = item.select_one('div.area_job > div.job_condition > span:nth-child(1) > a:nth-child(2)').text
 
-    title = soup.select_one('meta[property="og:title"]')['content']
-    image_url = soup.select_one('meta[property="og:image"]')['content']
-    synopsis = soup.select_one('meta[property="og:description"]')['content']
-    # print(title, image_url, synopsis)
-    doc = {
-        "url": url_rec,
-        "comment": comment_rec,
-        "title": title,
-        "imageUrl": image_url,
-        "synopsis": synopsis
-    }
-    res = db.alonememo.insert_one(doc)
-    print(res)
-    return jsonify({'msg': '등록 완료!'})
+        job_list.append({
+            "company": company,
+            "company_url":company_url,
+            "title": title,
+            "title_url": title_url,
+            "region": region
+        })
+    return jsonify({'job_list': job_list})
 
 # 주문하기(POST) API
 @app.route('/order', methods=['POST'])

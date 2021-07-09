@@ -44,24 +44,23 @@
                 url: "/jobs_get",
                 data: {},
                 success: function (response) {
-                    console.log(response);
-                    // const data = response['orders']
-                    // for (let i = 0; i < data.length; i++) {
-                    //     let data_name = data[i]['name']
-                    //     let data_cnt = data[i]['cnt']
-                    //     let data_addr = data[i]['addr']
-                    //     let data_phone = data[i]['phone']
+                    const data = response['job_list']
+                    for (let i = 0; i < data.length; i++) {
+                        let data_company = data[i]['company']
+                        let data_company_url = data[i]['company_url']
+                        let data_title = data[i]['title']
+                        let data_title_url = data[i]['title_url']
+                        let region = data[i]['region']
 
-                    //     const temp_html = `
-                    //             <tr>
-                    //                 <td>${data_name}</td>
-                    //                 <td>${data_cnt}</td>
-                    //                 <td>${data_addr}</td>
-                    //                 <td>${data_phone}</td>
-                    //             </tr>
-                    //         `
-                    //     $("#orderTable").append(temp_html)
-                    // }
+                        const temp_html = `
+                                <tr>
+                                    <td><a href="${data_company_url}">${data_company}</a></td>
+                                    <td><a href="${data_title_url}">${data_title}</td>
+                                    <td>${region}</td>
+                                </tr>
+                            `
+                        $("#jobsTable").append(temp_html)
+                    }
                 }
             })
         }
@@ -73,13 +72,12 @@
     <table class="type07">
         <thead>
             <tr>
-                <th>이름</th>
-                <th>수량</th>
-                <th>주소</th>
-                <th>연락처</th>
+                <th>회사명</th>
+                <th>공고명</th>
+                <th>지역</th>
             </tr>
         </thead>
-        <tbody id="orderTable">
+        <tbody id="jobsTable">
 
         </tbody>
     </table>
