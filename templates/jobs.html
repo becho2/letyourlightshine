@@ -24,6 +24,49 @@
 
     <title>탈출하자</title>
 
+    <script>
+        $(document).ready(function () {
+            // $.ajax({
+            //     type: "GET",
+            //     url: "http://spartacodingclub.shop/sparta_api/rate",
+            //     data: {},
+            //     success: function (response) {
+            //         let rate = response['rate'];
+            //         $("#rate").text(rate);
+            //     }
+            // })
+            showJobs()
+        });
+
+        function showJobs() {
+            $.ajax({
+                type: "GET",
+                url: "/jobs_get",
+                data: {},
+                success: function (response) {
+                    console.log(response);
+                    // const data = response['orders']
+                    // for (let i = 0; i < data.length; i++) {
+                    //     let data_name = data[i]['name']
+                    //     let data_cnt = data[i]['cnt']
+                    //     let data_addr = data[i]['addr']
+                    //     let data_phone = data[i]['phone']
+
+                    //     const temp_html = `
+                    //             <tr>
+                    //                 <td>${data_name}</td>
+                    //                 <td>${data_cnt}</td>
+                    //                 <td>${data_addr}</td>
+                    //                 <td>${data_phone}</td>
+                    //             </tr>
+                    //         `
+                    //     $("#orderTable").append(temp_html)
+                    // }
+                }
+            })
+        }
+    </script>
+
 </head>
 
 <body>
