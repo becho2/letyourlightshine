@@ -42,13 +42,15 @@ def jobs_get():
         title = item.select_one('div.area_job > h2 > a')['title']
         title_url = item.select_one('div.area_job > h2 > a')['href']
         region = item.select_one('div.area_job > div.job_condition > span:nth-child(1) > a:nth-child(2)').text
+        newornot = item.select_one('div.area_job > div.job_condition > span:nth-child(2)').text
 
         job_list.append({
             "company": company,
-            "company_url":company_url,
+            "company_url": "https://www.saramin.co.kr"+company_url,
             "title": title,
-            "title_url": title_url,
-            "region": region
+            "title_url": "https://www.saramin.co.kr"+title_url,
+            "region": region,
+            "newornot": newornot
         })
     return jsonify({'job_list': job_list})
 

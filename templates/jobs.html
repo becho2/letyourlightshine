@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+    <link href="http://letyourlightshine/css/main.css">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -23,6 +25,83 @@
 
 
     <title>탈출하자</title>
+    <style>
+        * {
+            font-family: "Nanum Gothic", sans-serif;
+        }
+
+        .wrap_all {
+            width: 800px;
+            height: 100%;
+            margin: auto;
+        }
+
+        .carousel-inner {
+            height: 500px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .goods_name {
+            font-size: 50px;
+        }
+
+        .wrap_details {
+            font-size: 25px;
+            padding-top: 20px;
+        }
+
+        select {
+            font-size: 15px;
+        }
+
+        .wrap_btn {
+            text-align: center;
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        table.type07 {
+            border-collapse: collapse;
+            text-align: left;
+            line-height: 1.5;
+            border: 1px solid #ccc;
+            margin: 20px 10px;
+        }
+
+        table.type07 thead {
+            border-right: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            background: #e7708d;
+        }
+
+        table.type07 thead th {
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            color: #fff;
+        }
+
+        table.type07 tbody th {
+            width: 150px;
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+            background: #fcf1f4;
+        }
+
+        table.type07 td {
+            width: 350px;
+            padding: 10px;
+            vertical-align: top;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
 
     <script>
         $(document).ready(function () {
@@ -44,6 +123,7 @@
                 url: "/jobs_get",
                 data: {},
                 success: function (response) {
+                    let temp_html = '';
                     const data = response['job_list']
                     for (let i = 0; i < data.length; i++) {
                         let data_company = data[i]['company']
@@ -51,16 +131,19 @@
                         let data_title = data[i]['title']
                         let data_title_url = data[i]['title_url']
                         let region = data[i]['region']
+                        let newornot = data[i]['newornot']
 
-                        const temp_html = `
+                        temp_html += `
                                 <tr>
                                     <td><a href="${data_company_url}">${data_company}</a></td>
                                     <td><a href="${data_title_url}">${data_title}</td>
                                     <td>${region}</td>
+                                    <td>${newornot}</td>
                                 </tr>
                             `
-                        $("#jobsTable").append(temp_html)
+
                     }
+                    $("#jobsTable").append(temp_html)
                 }
             })
         }
@@ -75,6 +158,7 @@
                 <th>회사명</th>
                 <th>공고명</th>
                 <th>지역</th>
+                <th>경력</th>
             </tr>
         </thead>
         <tbody id="jobsTable">

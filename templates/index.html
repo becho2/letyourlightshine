@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,7 +30,7 @@
     <title>Jin's page</title>
     <style>
         * {
-            font-family: 'Nanum Gothic', sans-serif;
+            font-family: "Nanum Gothic", sans-serif;
         }
 
         .wrap_all {
@@ -104,6 +105,7 @@
             border-bottom: 1px solid #ccc;
         }
     </style>
+
     <script>
         $(document).ready(function () {
             $.ajax({
@@ -124,6 +126,7 @@
 
 
         function showOrders() {
+            let temp_html = ''
             $.ajax({
                 type: "GET",
                 url: "/order",
@@ -136,16 +139,17 @@
                         let data_addr = data[i]['addr']
                         let data_phone = data[i]['phone']
 
-                        const temp_html = `
+                        temp_html += `
                                 <tr>
                                     <td>${data_name}</td>
                                     <td>${data_cnt}</td>
                                     <td>${data_addr}</td>
                                     <td>${data_phone}</td>
                                 </tr>
-                            `
-                        $("#orderTable").append(temp_html)
+                            `;
+
                     }
+                    $("#orderTable").append(temp_html)
                 }
             })
         }
