@@ -40,7 +40,7 @@
         }
 
         .carousel-inner {
-            height: 500px;
+            height: 600px;
         }
 
         img {
@@ -66,6 +66,7 @@
 
         .blue {
             color: blue;
+            font-size: 15px;
         }
 
         table.type07 {
@@ -120,9 +121,9 @@
             showOrders()
         });
 
-        function search() {
-            alert("미안해요, 사실 아무 기능도 없는 버튼이에요ㅠㅠ");
-        }
+        // function search() {
+        //     alert("미안해요, 사실 아무 기능도 없는 버튼이에요ㅠㅠ");
+        // }
 
 
         function showOrders() {
@@ -199,7 +200,7 @@
 <body>
     <div class="wrap_all">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">쇼핑몰</a>
+            <a class="navbar-brand" href="#">Jin's Page</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -210,10 +211,10 @@
                         <a class="nav-link" href="/jobs">채용공고 <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">쇼핑몰</a>
+                        <a class="nav-link" href="https://velog.io/@danceintherain">개발일지</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">메뉴</a>
+                        <a class="nav-link" href="https://www.instagram.com/mom.s_kitchen__/">메뉴(인스타)</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -228,34 +229,36 @@
                     </li>
                 </ul>
             </div>
-
-
+            <!-- 
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button onclick="search()" class="btn btn-outline-success my-2 my-sm-0" type="submit">검색</button>
-            </form>
+            </form> -->
         </nav>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100"
-                        src="https://images.unsplash.com/photo-1609521639071-94d9cc2095eb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1403&q=80"
-                        alt="First slide">
+                    <img class="d-block w-100" src="../static/yukjeon.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100"
-                        src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Second slide">
+                    <img class="d-block w-100" src="../static/tteok_1.jpg" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100"
-                        src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                        alt="Third slide">
+                    <img class="d-block w-100" src="../static/jeon_etc.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="../static/ddaeng_1.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="../static/yeongn_1.jpg" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -270,9 +273,21 @@
 
 
         <div class="wrap_details">
-            <p><span class="goods_name">과일세트</span> 가격: 7,990원</p>
-            <p>둘이 먹다 둘 다 죽어도 아무도 모르는 과일세트입니다. 식탁에 장식만 해둬도 있어보이지요. 식탁 위에 이 정도 과일바구니는 다들 있잖아요?</p>
-            <p class="blue">달러-원 환율: <span id="rate"></span></p>
+            <p><span class="goods_name">맘스키친Mom's Kitchen 반찬!</span></p>
+            <p> 가격: 반찬별 상이<a href="https://www.instagram.com/mom.s_kitchen__/">(인스타 참조)</a><br /><span class="blue">오늘
+                    달러-원 환율: <span id="rate"></span></span></p>
+
+            <pre>
+                각종 반찬,김치,명절음식,도시락 걱정 끝!
+                엄마가 만드는 건강하고 맛있는 반찬🍽
+                ✨AM9:00~PM20:00✨
+                하남두산위브 1층(홈플러스)
+                엄마의부엌👩🏻‍🍳
+                Mom's 🍽 kitchen
+                ♥️가격표없는반찬 4팩에 만원~!💶♥️
+                #하남#반찬가게#주문환영#예약가능#단체주문
+            </pre>
+
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">주문자 이름</span>
@@ -322,9 +337,9 @@
                 </div>
                 <select class="custom-select" id="cnt">
                     <option selected>선택</option>
-                    <option value="1">1 바구니</option>
-                    <option value="2">2 바구니(10% 추가 할인)</option>
-                    <option value="3">3 바구니(20% 추가 할인+배송비 무료)</option>
+                    <option value="1">4팩 1세트 (1만원)</option>
+                    <option value="2">4팩 2세트 (2만원)</option>
+                    <option value="3">4팩 3세트 (3만원+배송비 무료)</option>
                 </select>
             </div>
             <div class="wrap_btn">
