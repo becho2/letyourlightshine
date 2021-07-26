@@ -4,6 +4,7 @@
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, jsonify, request
+import html
 
 app = Flask(__name__)
 
@@ -60,11 +61,11 @@ def jobs_get():
 # 주문하기(POST) API
 @app.route('/order', methods=['POST'])
 def save_order():
-    name_rec = request.form['name']
-    cnt_rec = request.form['cnt']
-    addr_rec = request.form['addr']
-    code_rec = request.form['code']
-    phone_rec = request.form['phone']
+    name_rec = html.escape(request.form['name'])
+    cnt_rec = html.escape(request.form['cnt'])
+    addr_rec = html.escape(request.form['addr'])
+    code_rec = html.escape(request.form['code'])
+    phone_rec = html.escape(request.form['phone'])
     doc = {
         "name": name_rec,
         "cnt": cnt_rec,
