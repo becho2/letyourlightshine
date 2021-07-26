@@ -9,14 +9,17 @@ app = Flask(__name__)
 
 from pymongo import MongoClient
 
-client = MongoClient('mongodb://test:test@localhost', 27017)
-# client = MongoClient('localhost', 27017)
+# client = MongoClient('mongodb://test:test@localhost', 27017)
+client = MongoClient('localhost', 27017)
 db = client.dbhomework
 
 ## HTML 화면 보여주기
 @app.route('/')
 def index():
-    return render_template('index.html')
+    name = "what the"
+    return render_template('index.html',
+                           name = "what the"
+                           )
 
 ## HTML 화면 보여주기
 @app.route('/jobs')
